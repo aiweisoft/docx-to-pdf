@@ -33,6 +33,22 @@
 - Edge
 - Safari
 
+## 部署
+
+修改文件后，运行以下命令直接推送到 GitHub：
+
+```bash
+./deploy.sh "更新说明"
+```
+
+或者手动推送：
+
+```bash
+git add .
+git commit -m "更新说明"
+git push
+```
+
 ## 许可证
 
 MIT
