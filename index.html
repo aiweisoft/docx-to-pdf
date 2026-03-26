@@ -314,7 +314,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>📄 Word转PDF <span style="font-size: 14px; color: #999;">v1.0.2</span></h1>
+        <h1>📄 Word转PDF <span style="font-size: 14px; color: #999;">v1.0.5</span></h1>
         <p class="subtitle">将Word文档(.docx)转换为PDF文件</p>
 
         <div class="upload-area" id="uploadArea">
@@ -358,8 +358,6 @@
     <div id="pdfContainer"></div>
 
     <script>
-        const { jsPDF } = window.jspdf;
-
         const uploadArea = document.getElementById('uploadArea');
         const fileInput = document.getElementById('fileInput');
         const fileInfo = document.getElementById('fileInfo');
@@ -375,7 +373,12 @@
         let currentFile = null;
         let convertedHtml = '';
 
-        uploadArea.addEventListener('click', () => fileInput.click());
+        function openFileDialog() {
+            fileInput.value = '';
+            fileInput.click();
+        }
+
+        uploadArea.addEventListener('click', openFileDialog);
 
         uploadArea.addEventListener('dragover', (e) => {
             e.preventDefault();
@@ -465,17 +468,11 @@
                 const marginTop = 25.4;
                 const marginLeft = 25.4;
                 const contentWidth = 210 - marginLeft * 2;
-                const contentHeight = 297 - marginTop * 2;
-                const imgHeight = (canvas.height * imgWidth) / canvas.width;
                 
+                const { jsPDF } = window.jspdf;
                 const pdf = new jsPDF('p', 'mm', 'a4');
-                const fullPageHeight = imgHeight;
+                const fullPageHeight = (canvas.height * contentWidth) / canvas.width;
                 const pages = Math.ceil(fullPageHeight / pageHeight);
-                
-                const marginTop = 25.4;
-                const marginLeft = 25.4;
-                const contentWidth = 210 - marginLeft * 2;
-                const contentHeight = 297 - marginTop * 2;
                 
                 for (let i = 0; i < pages; i++) {
                     if (i > 0) {
