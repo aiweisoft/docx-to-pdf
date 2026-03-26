@@ -274,12 +274,13 @@
             position: fixed;
             left: -9999px;
             top: 0;
-            width: 190mm;
-            padding: 30mm 25mm;
+            width: 210mm;
+            padding: 25.4mm;
             background: white;
             font-family: 'Microsoft YaHei', 'SimSun', sans-serif;
             font-size: 12pt;
             line-height: 1.8;
+            box-sizing: border-box;
         }
 
         #pdfContainer table {
@@ -460,7 +461,7 @@
                 });
 
                 const imgData = canvas.toDataURL('image/jpeg', 0.95);
-                const imgWidth = 190;
+                const imgWidth = 210;
                 const pageHeight = 297;
                 const imgHeight = (canvas.height * imgWidth) / canvas.width;
                 
