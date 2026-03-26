@@ -314,7 +314,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>📄 Word转PDF <span style="font-size: 14px; color: #999;">v1.0.7</span></h1>
+        <h1>📄 Word转PDF <span style="font-size: 14px; color: #999;">v1.0.8</span></h1>
         <p class="subtitle">将Word文档(.docx)转换为PDF文件</p>
 
         <div class="upload-area" id="uploadArea">
@@ -465,8 +465,8 @@
 
                 const imgData = canvas.toDataURL('image/jpeg', 0.95);
                 const pageHeight = 297;
-                const marginTop = 30;
-                const marginLeft = 25;
+                const marginTop = 15;
+                const marginLeft = 15;
                 const contentWidth = 210 - marginLeft * 2;
                 
                 const { jsPDF } = window.jspdf;
