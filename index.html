@@ -461,13 +461,21 @@
                 });
 
                 const imgData = canvas.toDataURL('image/jpeg', 0.95);
-                const imgWidth = 210;
                 const pageHeight = 297;
+                const marginTop = 25.4;
+                const marginLeft = 25.4;
+                const contentWidth = 210 - marginLeft * 2;
+                const contentHeight = 297 - marginTop * 2;
                 const imgHeight = (canvas.height * imgWidth) / canvas.width;
                 
                 const pdf = new jsPDF('p', 'mm', 'a4');
                 const fullPageHeight = imgHeight;
                 const pages = Math.ceil(fullPageHeight / pageHeight);
+                
+                const marginTop = 25.4;
+                const marginLeft = 25.4;
+                const contentWidth = 210 - marginLeft * 2;
+                const contentHeight = 297 - marginTop * 2;
                 
                 for (let i = 0; i < pages; i++) {
                     if (i > 0) {
@@ -490,9 +498,9 @@
                     ctx.drawImage(canvas, 0, sourceY, canvas.width, sourceHeight, 0, 0, canvas.width, sourceHeight);
                     
                     const pageImgData = pageCanvas.toDataURL('image/jpeg', 0.95);
-                    const currentImgHeight = (pageCanvas.height * imgWidth) / pageCanvas.width;
+                    const currentImgHeight = (pageCanvas.height * contentWidth) / pageCanvas.width;
                     
-                    pdf.addImage(pageImgData, 'JPEG', 10, 0, imgWidth, currentImgHeight);
+                    pdf.addImage(pageImgData, 'JPEG', marginLeft, marginTop, contentWidth, currentImgHeight);
                 }
 
                 const pdfBlob = pdf.output('blob');
